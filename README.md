@@ -18,7 +18,7 @@ Current build status
 ====================
 
 [![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/numba-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/numba-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/numba-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/numba-feedstock/branch/master)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
