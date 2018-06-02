@@ -1,7 +1,7 @@
 {% set name = "numba" %}
-{% set version = "0.38.0" %}
+{% set version = "0.38.1" %}
 {% set hash_type = "sha256" %}
-{% set hash_value = "da1a5ae35a64536dcc46880450e0f839e53a2cf5c587fb09e5e1bf9cbcca8693" %}
+{% set hash_value = "48fb76b8dcde868d6426c7c7836b76a0b2b20861547770c27b6307f712c09bc5" %}
 
 package:
   name: '{{ name|lower }}'
