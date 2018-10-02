@@ -1,44 +1,66 @@
-{% set name = "numba" %}
-{% set version = "0.38.1" %}
-{% set hash_type = "sha256" %}
-{% set hash_value = "48fb76b8dcde868d6426c7c7836b76a0b2b20861547770c27b6307f712c09bc5" %}
+{% set version = "0.40.0" %}
+{% set sha256 = "a26f899a0fda9ca282f87587e0e9254d90b07b6ae8bc9a827ebcd6847a48c41b" %}
 
 package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
+  name: numba
+  version: {{ version }}
 
 source:
-  fn: '{{ name }}-{{ version }}.tar.gz'
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  '{{ hash_type }}': '{{ hash_value }}'
-  patches:
-    - PR_2932.patch
+  url: https://github.com/numba/numba/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
   number: 0
-  skip: true  # [win]
-  script: python setup.py install  --single-version-externally-managed --record=record.txt
+  skip: True  # [win]
+  entry_points:
+    - pycc = numba.pycc:main
+    - numba = numba.numba_entry:main
+  script:
+    - "{{ PYTHON }} buildscripts/remove_unwanted_files.py"
+    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+  ignore_run_exports:
+      # TBB is entirely optional
+      - tbb
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
+    - pip
     - setuptools
-    - llvmlite ==0.23.0
-    - numpy 1.11.*
-    - enum34  # [py2k]
+    - llvmlite 0.25.*
+    - numpy
+    - tbb-devel >=2018.0.5
+    - enum34          # [py2k]
     - singledispatch  # [py2k]
-    - funcsigs  # [py2k]
+    - funcsigs        # [py2k]
   run:
     - python
-    - llvmlite ==0.23.0
-    - numpy >=1.11
-    - enum34  # [py2k]
+    - {{ pin_compatible('llvmlite', max_pin='x.x') }}
+    - {{ pin_compatible('numpy') }}
+    - enum34          # [py2k]
     - singledispatch  # [py2k]
-    - funcsigs  # [py2k]
+    - funcsigs        # [py2k]
+  run_constrained:
+    # If TBB is present it must be at least this version from Anaconda due to
+    # build flag issues triggering UB in defaults::tbb=2018.0.4
+    # See https://github.com/numba/numba/pull/3202#issuecomment-415939206 ff.
+    - tbb >=2018.0.5
 
 test:
   requires:
+    - jinja2
+    # Required to test optional Numba features
+    - cffi
     - scipy
+    - ipython
+    - setuptools
+    - tbb
+    # Need these for AOT. Do not init msvc as it may not be present
+    - {{ compiler('c') }}      # [not win]
+    - {{ compiler('cxx') }}    # [not win]
   imports:
     - numba
     - numba.annotations
@@ -69,10 +91,7 @@ test:
     - numba.types
     - numba.typing
     - numba.unsafe
-  files:
-    - run_test.py
-  commands:
-    - python -m numba.runtests
+
 about:
   home: http://numba.github.com
   license: BSD 2-clause
