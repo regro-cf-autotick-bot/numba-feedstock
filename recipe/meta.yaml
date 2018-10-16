@@ -1,5 +1,5 @@
 {% set version = "0.40.0" %}
-{% set sha256 = "a26f899a0fda9ca282f87587e0e9254d90b07b6ae8bc9a827ebcd6847a48c41b" %}
+{% set sha256 = "74f0e1494a0a9ca1327dcde5e1ac5483199abbe20a7702e0115d65014d0d32fe" %}
 
 package:
   name: numba
@@ -26,6 +26,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+
   host:
     - python
     - pip
@@ -36,6 +37,7 @@ requirements:
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
+
   run:
     - python
     - {{ pin_compatible('llvmlite', max_pin='x.x') }}
@@ -43,6 +45,7 @@ requirements:
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
+
   run_constrained:
     # If TBB is present it must be at least this version from Anaconda due to
     # build flag issues triggering UB in defaults::tbb=2018.0.4
@@ -61,6 +64,7 @@ test:
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
     - {{ compiler('cxx') }}    # [not win]
+
   imports:
     - numba
     - numba.annotations
@@ -108,3 +112,4 @@ about:
 extra:
   recipe-maintainers:
     - souravsingh
+    - marcelotrevisani
