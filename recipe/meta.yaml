@@ -33,7 +33,7 @@ requirements:
     - setuptools
     - llvmlite 0.25.*
     - numpy
-    - tbb-devel >=2018.0.5
+    - tbb-devel >=2018.0.5  # [linux]
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
@@ -50,7 +50,7 @@ requirements:
     # If TBB is present it must be at least this version from Anaconda due to
     # build flag issues triggering UB in defaults::tbb=2018.0.4
     # See https://github.com/numba/numba/pull/3202#issuecomment-415939206 ff.
-    - tbb >=2018.0.5
+    - tbb >=2018.0.5  # [linux]
 
 test:
   requires:
@@ -60,7 +60,7 @@ test:
     - scipy
     - ipython
     - setuptools
-    - tbb
+    - tbb  # [linux]
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
     - {{ compiler('cxx') }}    # [not win]
