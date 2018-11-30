@@ -10,7 +10,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1000
   skip: True  # [win]
   entry_points:
     - pycc = numba.pycc:main
@@ -26,16 +26,18 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+
   host:
     - python
     - pip
     - setuptools
     - llvmlite 0.25.*
     - numpy
-    - tbb-devel >=2018.0.5
+    - tbb-devel >=2018.0.5  # [linux]
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
+
   run:
     - python
     - {{ pin_compatible('llvmlite', max_pin='x.x') }}
@@ -43,11 +45,12 @@ requirements:
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
+
   run_constrained:
     # If TBB is present it must be at least this version from Anaconda due to
     # build flag issues triggering UB in defaults::tbb=2018.0.4
     # See https://github.com/numba/numba/pull/3202#issuecomment-415939206 ff.
-    - tbb >=2018.0.5
+    - tbb >=2018.0.5  # [linux]
 
 test:
   requires:
@@ -57,10 +60,11 @@ test:
     - scipy
     - ipython
     - setuptools
-    - tbb
+    - tbb  # [linux]
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
     - {{ compiler('cxx') }}    # [not win]
+
   imports:
     - numba
     - numba.annotations
@@ -108,3 +112,4 @@ about:
 extra:
   recipe-maintainers:
     - souravsingh
+    - marcelotrevisani
