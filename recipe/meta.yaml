@@ -31,7 +31,7 @@ requirements:
     - python
     - pip
     - setuptools
-    - llvmlite 0.25.*
+    - llvmlite 0.26.*
     - numpy
     - tbb-devel >=2018.0.5  # [linux]
     - enum34          # [py2k]
