@@ -1,5 +1,5 @@
-{% set version = "0.41.0" %}
-{% set sha256 = "3d5725a2719d45e736d5acfbee63c9e7d5fab3b6406f59257fea6d10dbf5f416" %}
+{% set version = "0.42.0" %}
+{% set sha256 = "f28796398b47b776ec8300c4f889278d36aa0d5de6a67cf398d720c52cab0f04" %}
 
 package:
   name: numba
