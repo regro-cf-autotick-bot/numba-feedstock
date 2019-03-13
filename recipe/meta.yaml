@@ -44,7 +44,7 @@ requirements:
     - python
     - {{ pin_compatible('llvmlite', max_pin='x.x') }}
     - {{ pin_compatible('numpy') }}
-    - llvmlite 0.27.* # otherwise conda test picks up llvmlite >= 0.28
+    - llvmlite >=0.28.0
     - numpy 1.15.*
     - enum34          # [py2k]
     - singledispatch  # [py2k]
