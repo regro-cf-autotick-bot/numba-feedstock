@@ -1,6 +1,6 @@
 {% set name = "numba" %}
-{% set version = "0.42.1" %}
-{% set sha256 = "e6cc895d40e4b8e034acadce775d99c9ad8972f349ee8890b0a77ff183af52a9" %}
+{% set version = "0.43.0" %}
+{% set sha256 = "d281494030f2e9400d6e6745e65ae360fb192e6a9d1021b93412029449722532" %}
 
 package:
   name: numba
@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: True    # [win]
   entry_points:
     - pycc = numba.pycc:main
     - numba = numba.numba_entry:main
@@ -33,7 +33,7 @@ requirements:
     - python
     - pip
     - setuptools
-    - llvmlite 0.27.*
+    - llvmlite >=0.28.0
     - numpy 1.15.*    # with numpy 1.16, many tests fail
     - tbb-devel >=2018.0.5  # [linux]
     - enum34          # [py2k]
@@ -44,7 +44,7 @@ requirements:
     - python
     - {{ pin_compatible('llvmlite', max_pin='x.x') }}
     - {{ pin_compatible('numpy') }}
-    - llvmlite 0.27.* # otherwise conda test picks up llvmlite >= 0.28
+    - llvmlite >=0.28.0
     - numpy 1.15.*
     - enum34          # [py2k]
     - singledispatch  # [py2k]
