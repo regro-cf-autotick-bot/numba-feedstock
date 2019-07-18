@@ -60,7 +60,7 @@ test:
     - jinja2
     # Required to test optional Numba features
     - cffi
-    - scipy >=1.2,<1.3
+    - scipy
     - ipython
     - setuptools
     - faulthandler             # [py2k]
