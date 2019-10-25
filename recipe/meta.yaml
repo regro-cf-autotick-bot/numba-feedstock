@@ -1,6 +1,6 @@
 {% set name = "numba" %}
-{% set version = "0.45.1" %}
-{% set sha256 = "6a5da423d2f7aae9d84bb98166483d86e90146ab5cf15437506a5766cfae999e" %}
+{% set version = "0.46.0" %}
+{% set sha256 = "5b7f834af274b9ff6e8fabb3d6ddaff1e3bfa15c6cad7c7c630e70fb4f50b8f0" %}
 
 package:
   name: numba
@@ -33,7 +33,7 @@ requirements:
     - python
     - pip
     - setuptools
-    - llvmlite >=0.29.0
+    - llvmlite >=0.30.0
     - numpy
     - tbb-devel >=2018.0.5  # [linux]
     - enum34                # [py2k]
@@ -44,7 +44,7 @@ requirements:
     - python
     - {{ pin_compatible('llvmlite', max_pin='x.x') }}
     - {{ pin_compatible('numpy') }}
-    - llvmlite >=0.29.0
+    - llvmlite >=0.30.0
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
