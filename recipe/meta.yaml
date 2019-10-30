@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: True    # [win]
   entry_points:
     - pycc = numba.pycc:main
@@ -48,6 +48,8 @@ requirements:
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
+    # needed for pkg_resources
+    - setuptools
 
   run_constrained:
     # If TBB is present it must be at least this version from Anaconda due to
