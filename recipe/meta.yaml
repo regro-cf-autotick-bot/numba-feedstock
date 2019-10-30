@@ -48,6 +48,8 @@ requirements:
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
+    # needed for pkg_resources
+    - setuptools
 
   run_constrained:
     # If TBB is present it must be at least this version from Anaconda due to
