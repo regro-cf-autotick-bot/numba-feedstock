@@ -13,7 +13,6 @@ source:
 
 build:
   number: 1
-  skip: True    # [win]
   entry_points:
     - pycc = numba.pycc:main
     - numba = numba.numba_entry:main
