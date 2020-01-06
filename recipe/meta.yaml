@@ -43,7 +43,6 @@ requirements:
     - python
     - {{ pin_compatible('llvmlite', max_pin='x.x') }}
     - {{ pin_compatible('numpy') }}
-    - llvmlite >=0.31.0
     - enum34          # [py2k]
     - singledispatch  # [py2k]
     - funcsigs        # [py2k]
