@@ -57,7 +57,11 @@ requirements:
 
 test:
   requires:
+    # TODO: Remove the following conditional.
+    #       ref: https://github.com/numba/numba/pull/5029
+    {% if environ['PKG_VERSION'] != "0.47.0" or environ['PY_VER'] != "3.8" %}
     - jinja2
+    {% endif %}
     # Required to test optional Numba features
     - cffi
     - scipy
