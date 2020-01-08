@@ -36,4 +36,4 @@ python -m numba.tests.test_runtests
 
 # Run the whole test suite
 echo "Running: $SEGVCATCH python -m numba.runtests -b -m $TEST_NPROCS -- $TESTS_TO_RUN"
-$SEGVCATCH python -m numba.runtests -b -m $TEST_NPROCS -- $TESTS_TO_RUN
+$SEGVCATCH python -c 'import numba.testing.main as m; m._TIMEOUT = 900; import runpy; runpy.run_module("numba.runtests", run_name="__main__", alter_sys=True)' -b -m $TEST_NPROCS -- $TESTS_TO_RUN
