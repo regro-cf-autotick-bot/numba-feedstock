@@ -1,13 +1,13 @@
 {% set name = "numba" %}
-{% set version = "0.47.0" %}
-{% set sha256 = "e4ef73bed412e588147d565c5761c006a74f8369386ad59af810ecde34a42270" %}
+{% set version = "0.48.0" %}
+{% set sha256 = "7cadc9075a2675c9152ee36642cea34210a41ca6c5cc6f1cb47d2834f0e67bdf" %}
 
 package:
   name: numba
   version: {{ version }}
 
 source:
-  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz  # 0.42.1 is N/A in pypi
+  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   url: https://github.com/numba/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
@@ -22,7 +22,7 @@ build:
   ignore_run_exports:
       # TBB is entirely optional
       - tbb
-  skip: true  # [win and vc<14]
+  skip: true  # [py2k]
 
 requirements:
   build:
@@ -36,17 +36,11 @@ requirements:
     - llvmlite 0.31.*
     - numpy
     - tbb-devel >=2018.0.5  # [linux]
-    - enum34                # [py2k]
-    - singledispatch        # [py2k]
-    - funcsigs              # [py2k]
 
   run:
     - python
     - {{ pin_compatible('llvmlite', max_pin='x.x') }}
     - {{ pin_compatible('numpy') }}
-    - enum34          # [py2k]
-    - singledispatch  # [py2k]
-    - funcsigs        # [py2k]
     # needed for pkg_resources
     - setuptools
 
@@ -58,17 +52,12 @@ requirements:
 
 test:
   requires:
-    # TODO: Remove the following conditional.
-    #       ref: https://github.com/numba/numba/pull/5029
-    {% if environ['PKG_VERSION'] != "0.47.0" or environ['PY_VER'] != "3.8" %}
-    - jinja2
-    {% endif %}
     # Required to test optional Numba features
+    - jinja2
     - cffi
     - scipy
     - ipython
     - setuptools
-    - faulthandler             # [py2k]
     - tbb >=2018.0.5           # [linux]
     - intel-openmp             # [osx]
     # Need these for AOT. Do not init msvc as it may not be present
