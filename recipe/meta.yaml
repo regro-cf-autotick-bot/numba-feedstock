@@ -20,7 +20,7 @@ build:
     - {{ PYTHON }} buildscripts/remove_unwanted_files.py     # the script is not available in pypi tar-ball
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
   ignore_run_exports:
-      # TBB is entirely optional
+    # TBB is entirely optional
     - tbb
   skip: true  # [py2k]
 
