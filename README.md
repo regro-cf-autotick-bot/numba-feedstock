@@ -3,7 +3,7 @@ About numba
 
 Home: http://numba.github.com
 
-Package license: BSD 2-clause
+Package license: BSD-2-Clause
 
 Feedstock license: BSD 3-Clause
 
