@@ -84,12 +84,10 @@ test:
     - numba.runtime
     - numba.scripts
     - numba.roc.servicelib
-    - numba.targets
     - numba.testing
     - numba.tests
     - numba.tests.npyufunc
     - numba.typeconv
-    - numba.types
     - numba.typing
     - numba.unsafe
 
