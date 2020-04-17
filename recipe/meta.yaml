@@ -78,7 +78,7 @@ test:
     - numba.cuda.tests.nocuda
     - numba.datamodel
     - numba.experimental.jitclass
-    - numba.npyufunc
+    - numba.np.ufunc
     - numba.pycc
     - numba.rewrites
     - numba.runtime
