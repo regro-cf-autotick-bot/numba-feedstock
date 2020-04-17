@@ -83,7 +83,7 @@ test:
     - numba.rewrites
     - numba.runtime
     - numba.scripts
-    - numba.servicelib
+    - numba.roc.servicelib
     - numba.targets
     - numba.testing
     - numba.tests
