@@ -17,7 +17,6 @@ build:
     - pycc = numba.pycc:main
     - numba = numba.numba_entry:main
   script:
-    - {{ PYTHON }} buildscripts/remove_unwanted_files.py     # the script is not available in pypi tar-ball
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
   ignore_run_exports:
     # TBB is entirely optional
