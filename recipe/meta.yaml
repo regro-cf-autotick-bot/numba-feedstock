@@ -22,7 +22,6 @@ build:
   ignore_run_exports:
     # TBB is entirely optional
     - tbb
-  skip: true  # [py2k]
 
 requirements:
   build:
