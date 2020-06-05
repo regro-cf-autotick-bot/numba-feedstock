@@ -201,6 +201,7 @@ Feedstock Maintainers
 =====================
 
 * [@henryiii](https://github.com/henryiii/)
+* [@jakirkham](https://github.com/jakirkham/)
 * [@marcelotrevisani](https://github.com/marcelotrevisani/)
 * [@mbargull](https://github.com/mbargull/)
 * [@souravsingh](https://github.com/souravsingh/)
