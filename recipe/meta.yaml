@@ -61,6 +61,9 @@ test:
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
     - {{ compiler('cxx') }}    # [not win]
+    # Needed to bypass some datetime test failures.
+    # Drop when Numba 0.50.0 is released
+    - numpy <1.18
 
   imports:
     - numba
