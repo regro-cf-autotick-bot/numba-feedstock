@@ -37,7 +37,7 @@ requirements:
 
   run:
     - python
-    - llvmlite >=0.31.0,<0.33
+    - llvmlite >=0.33.0,<0.34
     - {{ pin_compatible('numpy') }}
     # needed for pkg_resources
     - setuptools
