@@ -76,7 +76,6 @@ test:
     - numba.cuda.tests.cudapy
     - numba.cuda.tests.cudasim
     - numba.cuda.tests.nocuda
-    - numba.datamodel
     - numba.experimental.jitclass
     - numba.np.ufunc
     - numba.pycc
@@ -87,8 +86,8 @@ test:
     - numba.testing
     - numba.tests
     - numba.tests.npyufunc
-    - numba.typeconv
-    - numba.typing
+    - numba.typed
+    - numba.types
     - numba.unsafe
 
 about:
