@@ -65,7 +65,13 @@ test:
 
   imports:
     - numba
-    - numba.annotations
+    - numba.core.annotations
+    - numba.core.datamodel
+    - numba.core.rewrites
+    - numba.core.runtime
+    - numba.core.typeconv
+    - numba.core.typing
+    - numba.core.unsafe
     - numba.cuda
     - numba.cuda.cudadrv
     - numba.cuda.kernels
@@ -77,20 +83,14 @@ test:
     - numba.cuda.tests.cudapy
     - numba.cuda.tests.cudasim
     - numba.cuda.tests.nocuda
-    - numba.datamodel
     - numba.experimental.jitclass
     - numba.np.ufunc
     - numba.pycc
-    - numba.rewrites
-    - numba.runtime
     - numba.scripts
     - numba.roc.servicelib
     - numba.testing
     - numba.tests
     - numba.tests.npyufunc
-    - numba.typeconv
-    - numba.typing
-    - numba.unsafe
 
 about:
   home: http://numba.github.com
