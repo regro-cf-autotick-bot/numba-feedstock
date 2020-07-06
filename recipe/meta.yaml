@@ -1,6 +1,6 @@
 {% set name = "numba" %}
-{% set version = "0.49.1" %}
-{% set sha256 = "f430bb27c61379135be664dd1a105862d9656ac426ad343bb5c84dc2bcca4cc3" %}
+{% set version = "0.50.1" %}
+{% set sha256 = "f45d6a85c8aedde8c99e775070f3fa699d6b941f0f635e268c14b3561d787789" %}
 
 package:
   name: numba
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - pycc = numba.pycc:main
     - numba = numba.misc.numba_entry:main
@@ -31,13 +31,13 @@ requirements:
     - python
     - pip
     - setuptools
-    - llvmlite 0.31.0
+    - llvmlite 0.33.0
     - numpy
     - tbb-devel >=2019.5  # [linux]
 
   run:
     - python
-    - llvmlite >=0.31.0,<0.33
+    - llvmlite >=0.33.0,<0.34
     - {{ pin_compatible('numpy') }}
     # needed for pkg_resources
     - setuptools
@@ -61,13 +61,17 @@ test:
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
     - {{ compiler('cxx') }}    # [not win]
-    # Needed to bypass some datetime test failures.
-    # Drop when Numba 0.50.0 is released
-    - numpy <1.18
+    - numpy >=1.15
 
   imports:
     - numba
-    - numba.annotations
+    - numba.core.annotations
+    - numba.core.datamodel
+    - numba.core.rewrites
+    - numba.core.runtime
+    - numba.core.typeconv
+    - numba.core.typing
+    - numba.core.unsafe
     - numba.cuda
     - numba.cuda.cudadrv
     - numba.cuda.kernels
@@ -79,20 +83,14 @@ test:
     - numba.cuda.tests.cudapy
     - numba.cuda.tests.cudasim
     - numba.cuda.tests.nocuda
-    - numba.datamodel
     - numba.experimental.jitclass
     - numba.np.ufunc
     - numba.pycc
-    - numba.rewrites
-    - numba.runtime
     - numba.scripts
     - numba.roc.servicelib
     - numba.testing
     - numba.tests
     - numba.tests.npyufunc
-    - numba.typeconv
-    - numba.typing
-    - numba.unsafe
 
 about:
   home: http://numba.github.com
