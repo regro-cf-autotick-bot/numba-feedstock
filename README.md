@@ -255,4 +255,5 @@ Feedstock Maintainers
 * [@marcelotrevisani](https://github.com/marcelotrevisani/)
 * [@mbargull](https://github.com/mbargull/)
 * [@souravsingh](https://github.com/souravsingh/)
+* [@step21](https://github.com/step21/)
 
