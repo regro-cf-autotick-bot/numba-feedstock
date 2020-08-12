@@ -31,13 +31,13 @@ requirements:
     - python
     - pip
     - setuptools
-    - llvmlite 0.33.0
+    - llvmlite 0.34.0
     - numpy
     - tbb-devel >=2019.5  # [linux]
 
   run:
     - python
-    - llvmlite >=0.33.0,<0.34
+    - llvmlite >=0.34.0,<0.35
     - {{ pin_compatible('numpy') }}
     # needed for pkg_resources
     - setuptools
