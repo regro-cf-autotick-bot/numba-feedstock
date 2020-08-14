@@ -61,7 +61,9 @@ test:
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
     - {{ compiler('cxx') }}    # [not win]
-    - numpy >=1.15
+    # Working around an issue with NumPy 1.19
+    # xref: https://github.com/numba/numba/issues/5929
+    - numpy >=1.15,<1.19
 
   imports:
     - numba
