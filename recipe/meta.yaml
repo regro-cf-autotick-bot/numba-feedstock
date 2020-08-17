@@ -1,6 +1,6 @@
 {% set name = "numba" %}
-{% set version = "0.50.1" %}
-{% set sha256 = "f45d6a85c8aedde8c99e775070f3fa699d6b941f0f635e268c14b3561d787789" %}
+{% set version = "0.51.0" %}
+{% set sha256 = "18b4d95252b3a35dc7c219902a23c82f0ad7b91cc7dcafd70fc4032ac213d8f4" %}
 
 package:
   name: numba
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - pycc = numba.pycc:main
     - numba = numba.misc.numba_entry:main
@@ -31,13 +31,13 @@ requirements:
     - python
     - pip
     - setuptools
-    - llvmlite 0.33.0
+    - llvmlite 0.34.0
     - numpy
-    - tbb-devel >=2019.5  # [linux]
+    - tbb-devel >=2019.5  # [linux64 or ppc64le]
 
   run:
     - python
-    - llvmlite >=0.33.0,<0.34
+    - llvmlite >=0.34.0,<0.35
     - {{ pin_compatible('numpy') }}
     # needed for pkg_resources
     - setuptools
@@ -46,7 +46,7 @@ requirements:
     # If TBB is present it must be at least this version from Anaconda due to
     # build flag issues triggering UB in defaults::tbb=2018.0.4
     # See https://github.com/numba/numba/pull/3202#issuecomment-415939206 ff.
-    - tbb >=2019.5  # [linux]
+    - tbb >=2019.5  # [linux64 or ppc64le]
 
 test:
   requires:
@@ -56,12 +56,14 @@ test:
     - scipy
     - ipython
     - setuptools
-    - tbb >=2018.0.5           # [linux]
+    - tbb >=2018.0.5           # [linux64 or ppc64le]
     - intel-openmp             # [osx]
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
     - {{ compiler('cxx') }}    # [not win]
-    - numpy >=1.15
+    # Working around an issue with NumPy 1.19
+    # xref: https://github.com/numba/numba/issues/5929
+    - numpy >=1.15,<1.19
 
   imports:
     - numba
