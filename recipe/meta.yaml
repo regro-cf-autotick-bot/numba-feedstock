@@ -33,7 +33,7 @@ requirements:
     - setuptools
     - llvmlite 0.34.0
     - numpy
-    - tbb-devel >=2019.5  # [linux]
+    - tbb-devel >=2019.5  # [linux64 or ppc64le]
 
   run:
     - python
@@ -46,7 +46,7 @@ requirements:
     # If TBB is present it must be at least this version from Anaconda due to
     # build flag issues triggering UB in defaults::tbb=2018.0.4
     # See https://github.com/numba/numba/pull/3202#issuecomment-415939206 ff.
-    - tbb >=2019.5  # [linux]
+    - tbb >=2019.5  # [linux64 or ppc64le]
 
 test:
   requires:
@@ -56,7 +56,7 @@ test:
     - scipy
     - ipython
     - setuptools
-    - tbb >=2018.0.5           # [linux]
+    - tbb >=2018.0.5           # [linux64 or ppc64le]
     - intel-openmp             # [osx]
     # Need these for AOT. Do not init msvc as it may not be present
     - {{ compiler('c') }}      # [not win]
